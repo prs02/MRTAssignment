@@ -1,0 +1,106 @@
+﻿
+@model MRTAssignment.Models.PassengerModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Result</title>
+</head>
+<body style="font-family:Calibri;">
+    <div align="center">
+        <h2>Confirmed</h2>
+        <h3>Thank You, @Model.name!</h3>
+        @{
+            try
+            {
+
+                WebMail.SmtpServer = "smtp.gmail.com";
+                WebMail.SmtpPort = 587;
+                WebMail.EnableSsl = true;
+                WebMail.UserName = "mrtassignment";
+                WebMail.Password = "hafiy00000";
+                WebMail.From = "mrtassignment@gmail.com";
+                WebMail.Send(Model.email, "MRT Test",
+                    "Thank you for using MRT Ticketing Online.<br />Please find below details of your ticket purchase.<br/>" +
+                    "Have a pleasant journey. <br /><br />" +
+                    "Name: " + Model.name + " <br /> " +
+                    "ID Number: " + Model.idCard + "<br />" +
+                    "Passport No: " + Model.passportNo + "<br />" +
+                    "E-mail: " + Model.email + "<br />" +
+                    "Ticket Type: " + Model.ticketType + "<br />" +
+
+                    "Current Station: " + Model.stationFrom + "<br />" +
+                    "Destination: " + Model.stationTo + "<br />" +
+                    "<b>Total Price: " + Model.ticketPrice.ToString("RM 0.00") + "</b><br />" +
+                    "Quantity: " + Model.ticketQty + "<br />"
+                    );
+
+                <h4>An E-mail has been sent to your e-mail address.</h4>
+            }
+            catch (Exception ex)
+            {
+                @:Sorry, email could not be sent.<br />
+                @ex.Message
+            }
+        }
+        <table>
+            <tr>
+                <td>Name</td>
+                <td align="right">@ViewBag.Name</td>
+            </tr>
+            <tr>
+                <td>ID Number</td>
+                <td align="right">@ViewBag.Id</td>
+            </tr>
+            <tr>
+                <td>Passport No</td>
+                <td align="right">@ViewBag.Passport</td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td align="right">@ViewBag.Email</td>
+            </tr>
+            <tr>
+                <td>Ticket Type</td>
+                <td align="right">@ViewBag.TicketType</td>
+            </tr>
+
+            <tr>
+                <td>Current Station</td>
+                <td align="right">@ViewBag.StationFrom</td>
+            </tr>
+            <tr>
+                <td>Destination</td>
+                <td align="right">@ViewBag.StationTo</td>
+            </tr>
+            <tr>
+                <td>No. Of Ticket</td>
+                <td align="right">@ViewBag.Qty</td>
+            </tr>
+            <tr>
+                <td><b>Total Price</b></td>
+                <td align="right"><b>@ViewBag.Price.ToString("RM 0.00")</b></td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                <input type="submit" value="Home" formaction="@Url.Action("Index", "Home")" />
+                    &nbsp;
+                <input type="submit" value="Download" onclick="window.print()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

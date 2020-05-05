@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRTAssignment", "MRTAssignment\MRTAssignment.csproj", "{7BC0EDD7-8749-4236-814D-20F501C8C733}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BC0EDD7-8749-4236-814D-20F501C8C733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC0EDD7-8749-4236-814D-20F501C8C733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC0EDD7-8749-4236-814D-20F501C8C733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC0EDD7-8749-4236-814D-20F501C8C733}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {273AC12B-59B5-4EE5-8E01-AE7BA5A331C3}
+	EndGlobalSection
+EndGlobal

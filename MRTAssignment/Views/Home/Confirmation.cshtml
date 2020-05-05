@@ -1,0 +1,69 @@
+﻿@model MRTAssignment.Models.PassengerModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Confirmation</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body style="font-family:Calibri;">
+    <div align="center">
+        <h3>Confirmation</h3>
+        <table>
+            <tr><td>Current Station</td><td>:</td><td>@ViewBag.stationFrom</td></tr>
+            <tr><td>Destination</td><td>:</td><td>@ViewBag.stationTo</td></tr>
+            <tr><td>Price per Ticket</td><td>:</td><td>@ViewBag.Charge.ToString("RM 0.00")</td></tr>
+            <tr><td>Ticket Type</td><td>:</td><td>@ViewBag.TicketType</td></tr>
+            <tr><td>Ticket Quantity</td><td>:</td><td>@ViewBag.Qty</td></tr>
+            <tr><td>Total</td><td>:</td><td>@ViewBag.TotalPay.ToString("RM 0.00")</td></tr>
+            @if (ViewBag.Discount != null)
+            {
+                <tr><td>Discount</td><td>:</td><td>@ViewBag.Discount</td></tr>
+                <tr><td><b>Total Amount to Pay</b></td><td>:</td><td><b>@ViewBag.NewTotalPay.ToString("RM 0.00")</b></td></tr>
+            }
+        </table>
+
+        @using (Html.BeginForm())
+        {
+            <br />
+            <table>
+                <tr>
+                    <td>
+                        <div align="center">
+                            <h4>Continue purchasing?</h4>
+                            Please input your details.
+                        </div>
+                        <table>
+                            <tr><td>Name:</td><td>@Html.TextBoxFor(x => x.name, new { type = "text", required = "required" })</td></tr>
+                            <tr><td>E-mail:</td><td>@Html.TextBoxFor(x => x.email, new { type = "email", required = "required" })</td></tr>
+                            <tr><td>ID Card:</td><td>@Html.TextBoxFor(x => x.idCard, new { type = "text", required = "required" })</td></tr>
+                            <tr><td>Passport No:</td><td>@Html.TextBoxFor(x => x.passportNo, new { type = "text", required = "required" })</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            //Ticket Price: @Html.TextBoxFor(x => x.ticketPrice, new { id = "ticketPrice", Value = @ViewBag.Charge })
+            @Html.HiddenFor(x => x.stationFrom, new { id = "stationFrom", Value = ViewBag.StationFrom })
+            @Html.HiddenFor(x => x.stationTo, new { id = "stationTo", Value = ViewBag.StationTo })
+            @Html.HiddenFor(x => x.ticketType, new { id = "ticketType", Value = ViewBag.TicketType })
+            @Html.HiddenFor(x => x.ticketQty, new { id = "ticketQty", Value = ViewBag.Qty })
+            @Html.HiddenFor(x => x.ticketPrice, new { id = "ticketPrice", Value = ViewBag.NewTotalPay })
+            @Html.HiddenFor(x => x.passengerType, new { id = "passengerType", Value = ViewBag.PassengerType })
+
+            //@Html.Hidden(new { id = "total", Value = ViewBag.Charge})
+
+            <p><input type="submit" value="Proceed" formaction="@Url.Action("Result")" /></p>
+        }
+    </div>
+</body>
+</html>

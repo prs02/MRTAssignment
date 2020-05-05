@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/StyleSheet/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/StyleSheet/scrolling-nav.css" rel="stylesheet" />
+    <link href="~/Content/StyleSheet/Validation.css" rel="stylesheet" />
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body id="page-top">
+    <nav class="navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav" style="max-height: 150px;">
+        <img src="~/Images/mrtlogo.png" style="max-height: 125px" />
+        <div class="container">
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <script src="~/Content/JS/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/JS/scrolling-nav.js"></script>
+        <script src="~/Content/JS/jquery.easing.min.js"></script>
+        <script src="~/Content/JS/jquery.min.js"></script>
+    </footer>
+
+    <script src="~/Content/JS/jquery-3.3.1.js"></script>
+    <script src="~/Content/JS/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Content/JS/jquery.validate.min.js"></script>
+    <script src="~/Content/JS/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
